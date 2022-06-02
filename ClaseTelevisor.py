@@ -35,7 +35,7 @@ class Televisor(aparato):
         return self.__conexion
     
     def getImporte(self)->float:
-        importe = self.__precio
+        importe = self.getPrecio()
         if(self.__definicion.upper() == "SD"):
             importe += importe* 0.01
         elif(self.__definicion.upper() == "HD"):
@@ -44,18 +44,18 @@ class Televisor(aparato):
             importe += importe* 0.03
         
         if self.__conexion:
-            importe += self.__precio *0.1
+            importe += self.getPrecio() *0.1
         
         return importe
     
-    def toJSON(self):
+    def toJson(self):
         diccionarioTV = dict(__class__ = self.__class__.__name__, 
         __atributos__ = dict(
-            marca = self.__marca,
-            modelo = self.__modelo,
-            color = self.__color,
-            pais = self.__pais,
-            precio = self.__precio,
+            marca = self.getMarca(),
+            modelo = self.getModelo(),
+            color = self.getColor(),
+            pais = self.getPais(),
+            precio = self.getPais(),
             tipoPantalla = self.__tipoPantalla,
             pulgadas = self.__pulgadas,
             definicion = self.__definicion,

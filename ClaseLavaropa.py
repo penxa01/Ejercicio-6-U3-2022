@@ -16,7 +16,7 @@ class Lavarropa(aparato):
 
     def __str__(self):
         cadena = ""
-        cadena += super().__str__() + ("Capacidad de lavado:{}\nVelocidad de centrifugado:{}\nCantidad de programas:{}\nTipo de carga:{}".format(self.__capacidad,self.__velCentrifugado,self.__cantProg,self.__tipoCarga))
+        cadena += super().__str__() + ("Capacidad de lavado:{}\nVelocidad de centrifugado:{}\nCantidad de programas:{}\nTipo de carga:{}".format(self.__capacidad,self.__velocidad,self.__cantProgramas,self.__tipoCarga))
         return cadena
 
     def getCapacidad(self)->int:
@@ -32,7 +32,7 @@ class Lavarropa(aparato):
         return self.__tipoCarga
     
     def getImporte(self):
-        importe = self.__precio
+        importe = self.getPrecio()
 
         if(self.__capacidad <= 5):
             importe += importe * 0.01
@@ -40,17 +40,17 @@ class Lavarropa(aparato):
             importe += importe * 0.03
         return importe
 
-    def toJSON(self):
+    def toJson(self):
         diccionarioLavarropa = dict(__class__ = self.__class__.__name__, 
         __atributos__ = dict(
-            marca = self.__marca,
-            modelo = self.__modelo,
-            color = self.__color,
-            pais = self.__pais,
-            precio = self.__precio,
+            marca = self.getMarca(),
+            modelo = self.getModelo(),
+            color = self.getColor(),
+            pais = self.getPais(),
+            precio = self.getPais(),
             capcidad = self.__capacidad,
-            velocidadCentr = self.__velCentrifugado,
-            cantProg = self.__cantProg,
+            velocidadCentr = self.__velocidad,
+            cantProg = self.__cantProgramas,
             tipoCarga = self.__tipoCarga)
         )
         return diccionarioLavarropa

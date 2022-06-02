@@ -16,7 +16,7 @@ class aparato(ABC):
         self.__precio = precio
 
     def __str__(self):
-        return("Marca:{}    Modelo:{}\nColor:{}\nPais de Fabricacion:{}\nPrecio de Base:{}\n".format(self.__marca,self.__modelo,self.__color,self.__pais,self.__precio))
+        return("Marca:{}    Modelo:{}\nColor:{}\nPais de Fabricacion:{}\nPrecio de Base:${}\n".format(self.__marca,self.__modelo,self.__color,self.__pais,self.__precio))
 
     def getMarca(self):
         return self.__marca
@@ -42,5 +42,5 @@ class aparato(ABC):
         pass
 
     @abc.abstractclassmethod
-    def toJSON(self):
+    def toJson(self):
         pass

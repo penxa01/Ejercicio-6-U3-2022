@@ -27,7 +27,7 @@ class Heladera(aparato):
         return self.__ciclica
 
     def getImporte(self):
-        importe = self.__precio
+        importe = self.getPrecio()
 
         if self.__freezer:
             importe += importe* 0.05
@@ -35,18 +35,18 @@ class Heladera(aparato):
             importe += importe*0.01
         
         if self.__ciclica:
-            importe += self.__precio*0.1
+            importe += self.getPrecio()*0.1
         
         return importe
     
-    def toJSON(self):
+    def toJson(self):
         diccionarioHeladera = dict(__class__ = self.__class__.__name__, 
         __atributos__ = dict(
-            marca = self.__marca,
-            modelo = self.__modelo,
-            color = self.__color,
-            pais = self.__pais,
-            precio = self.__precio,
+            marca = self.getMarca(),
+            modelo = self.getModelo(),
+            color = self.getColor(),
+            pais = self.getPais(),
+            precio = self.getPais(),
             capacidad = self.__capacidad,
             freezer = self.__freezer,
             ciclica = self.__ciclica)
